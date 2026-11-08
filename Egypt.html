@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt - Ancient Civilization</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0b0b0d;
+            --white: #ffffff;
+            --accent-gold: #ffbf5e;
+            --accent-gold-hover: #ffca7b;
+            --primary-brown: #8b2626;
+            --primary-brown-hover: #a53030;
+            --font-heading: "Archivo Black", sans-serif;
+            --font-body: "Libre Baskerville", serif;
+            --font-mono: "IBM Plex Mono", monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--black);
+            background-image: linear-gradient(rgba(11, 11, 13, 0.75), rgba(11, 11, 13, 0.85)), url('img/egyptbg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: var(--font-body);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        audio {
+            height: 40px;
+            outline: none;
+            border-radius: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .text-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .action-btn {
+            background-color: var(--primary-brown);
+            color: var(--white);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 38, 38, 0.4);
+        }
+
+        .action-btn:hover {
+            background-color: var(--primary-brown-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 38, 38, 0.6);
+        }
+
+        /* Interactive Flip Card */
+        .card {
+            width: 100%;
+            height: 380px;
+            background: var(--accent-gold);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: var(--accent-gold-hover);
+            box-shadow: 0 15px 35px rgba(255, 191, 94, 0.3);
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .first-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            transition: all 0.4s ease;
+            opacity: 1;
+        }
+
+        .first-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card:hover .first-content {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .second-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            color: var(--black);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            opacity: 0;
+            transform: rotate(-10deg) scale(0.8);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .second-content {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 850px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .card {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Egypt</h1>
+            <audio id="bg-audio" src="audeo/egyaud.mp3" autoplay loop controls></audio>
+        </header>
+
+        <main class="content-grid">
+            <div class="text-content">
+                <p>
+                    Ancient Egyptian civilization is considered one of the greatest and oldest civilizations known to the world, having emerged along the banks of the Nile River thousands of years ago. It was characterized by remarkable advancements in agriculture, architecture, medicine, astronomy, writing, and the arts, leaving behind magnificent monuments that continue to captivate the world to this day.
+                </p>
+            </div>
+
+            <!-- Interactive Card Component -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/egyp1.jpg" alt="Egypt Monument">
+                    </div>
+                    <div class="second-content">
+                        Discover Ancient Wonders
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Autoplay handler fallback on initial user click
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('bg-audio');
+            if (audio && audio.paused) {
+                audio.play().catch(() => {});
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>

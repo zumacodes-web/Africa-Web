@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Africa - Heritage & Nations</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0b0b0d;
+            --white: #ffffff;
+            --accent-gold: #ffbf5e;
+            --accent-gold-hover: #ffca7b;
+            --primary-brown: #8b2626;
+            --primary-brown-hover: #a53030;
+            --font-heading: "Archivo Black", sans-serif;
+            --font-body: "Libre Baskerville", serif;
+            --font-mono: "IBM Plex Mono", monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--black);
+            background-image: linear-gradient(rgba(11, 11, 13, 0.75), rgba(11, 11, 13, 0.85)), url('img/bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: var(--font-body);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* Interactive Flip Card */
+        .card {
+            width: 190px;
+            height: 254px;
+            background: var(--accent-gold);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: var(--accent-gold-hover);
+            box-shadow: 0 15px 35px rgba(255, 191, 94, 0.3);
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .first-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            transition: all 0.4s ease;
+            opacity: 1;
+        }
+
+        .imgcard {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card:hover .first-content {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .second-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            color: var(--black);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            opacity: 0;
+            transform: rotate(-10deg) scale(0.8);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .second-content {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        button {
+            background-color: var(--primary-brown);
+            color: var(--white);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 38, 38, 0.4);
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--primary-brown-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 38, 38, 0.6);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .copyright {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+            text-transform: capitalize;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to Africa</h1>
+
+        <div class="cards-grid">
+            <!-- Egypt Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Egypt.jpg" alt="Egypt" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Egypt</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Egypt.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eritrea Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Eritrea.jpg" alt="Eritrea" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Eritrea</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Eritrea.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethiopia Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Ethiopia.jpg" alt="Ethiopia" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Ethiopia</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Ethiopia.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tunisia Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Tunisia.jpg" alt="Tunisia" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Tunisia</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Tunasia.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sudan Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Sudan.jpg" alt="Sudan" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Sudan</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Sudan.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Morocco Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/morroco.jpg" alt="Morocco" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Morocco</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Morroco.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Algeria Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Algeria.jpg" alt="Algeria" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Algeria</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Algeria.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kenya Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Kenya.jpg" alt="Kenya" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Kenya</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Kenya.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- South Africa Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/s-africa.jpg" alt="South Africa" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>South Africa</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="s-africa.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nigeria Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Nigeria.jpg" alt="Nigeria" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Nigeria</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Nigeria.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ghana Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Ghana.jpg" alt="Ghana" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Ghana</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Ghana.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senegal Card -->
+            <div class="card">
+                <div class="card-inner">
+                    <div class="first-content">
+                        <img src="img/Senegal.jpg" alt="Senegal" class="imgcard">
+                    </div>
+                    <div class="second-content">
+                        <span>Senegal</span>
+                        <hr style="width: 50%; border-top: 1px solid black; margin: 8px 0;">
+                        <a href="Senegal.html"><button>About</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        
+        <p class="copyright">
+            &copy; styles by : jasser ahmed samir <br> 
+            &copy; programmed by : hazem ahmed samir & gemini ai <br> 
+            &copy; information searched by : hazem ahmed lotfy
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #000000;
+            background-image: url('https://i.pinimg.com/1200x/b8/c7/b7/b8c7b7218d7e113c464468dac0fd807c.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: "Archivo Black", sans-serif;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 4rem;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        /* Triggered on click before redirect */
+        body.fade-out {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2.5rem;
+        }
+
+        h1 {
+            font-size: 130px;
+            line-height: 0.9;
+            text-transform: uppercase;
+            text-align: right;
+            color: #ffffff;
+        }
+
+        .start-btn {
+            font-family: "Archivo Black", sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            color: #000000;
+            background-color: #ffffff;
+            border: none;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+            margin-right: 10rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .start-btn:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME <br> TO AFRICA</h1>
+        <button class="start-btn" id="startBtn">START</button>
+    </div>
+
+    <script>
+        const btn = document.getElementById('startBtn');
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); // Pause immediate navigation
+            
+            // Add fade-out class to trigger full-page exit transition
+            document.body.classList.add('fade-out');
+
+            // Wait for animation to finish before going to home.html
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 600); // 600ms matches CSS transition duration
+        });
+    </script>
+</body>
+</html>
